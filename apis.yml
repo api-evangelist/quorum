@@ -1,0 +1,19 @@
+aid: quorum
+url: https://raw.githubusercontent.com/api-evangelist/quorum/refs/heads/main/apis.yml
+apis:
+- aid: quorum:quorum-api
+  name: Quorum Business Solutions API
+  tags:
+  - Energy
+  - Oil & Gas
+  - Upstream
+  - Land
+  - Production
+  image: https://raw.githubusercontent.com/api-evangelist/quorum/refs/heads/main/image.png
+  humanURL: https://www.quorumsoftware.com/
+  baseURL: https://api.quorumsoftware.example.com
+  properties:
+  - url: https://www.quorumsoftware.com/
+    type: Documentation
+  description: >-
+    Quorum Business Solutions provides software for upstream oil and gas operations. APIs enable access to land management, royalty accounting, production reporting, and division order data for exploration and production companies.

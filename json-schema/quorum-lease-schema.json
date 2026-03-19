@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/quorum/json-schema/quorum-lease-schema.json",
+  "title": "Quorum Oil & Gas Lease",
+  "description": "Schema for a Quorum Land Management oil and gas lease record representing a mineral rights agreement between a lessor and lessee.",
+  "type": "object",
+  "properties": {
+    "leaseId": {
+      "type": "string",
+      "description": "Quorum system-generated lease identifier"
+    },
+    "leaseName": {
+      "type": "string",
+      "description": "Lease name or description"
+    },
+    "leaseNumber": {
+      "type": "string",
+      "description": "User-defined lease number"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "EXPIRED", "SURRENDERED", "HELD_BY_PRODUCTION", "PRODUCING", "SHUT_IN"],
+      "description": "Current lease status"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Lease commencement/effective date"
+    },
+    "expirationDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Lease expiration date; null if held by production"
+    },
+    "primaryTerm": {
+      "type": "integer",
+      "description": "Primary term duration in months"
+    },
+    "royaltyRate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Royalty rate as decimal fraction (e.g., 0.1875 = 18.75%)"
+    },
+    "netAcres": {
+      "type": "number",
+      "description": "Net mineral acres held under this lease"
+    },
+    "grossAcres": {
+      "type": "number",
+      "description": "Gross acres in the lease"
+    },
+    "county": {
+      "type": "string",
+      "description": "County where the lease is located"
+    },
+    "state": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "US state abbreviation (e.g., TX, OK, ND)"
+    },
+    "lessor": {
+      "type": "string",
+      "description": "Mineral rights owner / grantor name"
+    },
+    "lessee": {
+      "type": "string",
+      "description": "Oil company / operator holding the lease"
+    },
+    "hbpStatus": {
+      "type": "boolean",
+      "description": "True if lease is currently held by production"
+    },
+    "deepRightsReserved": {
+      "type": "boolean",
+      "description": "True if deep rights are reserved from lease"
+    },
+    "surfaceWaiverObtained": {
+      "type": "boolean",
+      "description": "True if surface waiver has been obtained"
+    },
+    "createDatetime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdateDatetime": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["leaseId", "leaseName", "status", "effectiveDate", "royaltyRate", "netAcres", "county", "state", "lessor"],
+  "examples": [
+    {
+      "leaseId": "LEASE-TX-001234",
+      "leaseName": "Smith Family Minerals",
+      "leaseNumber": "TX-001234",
+      "status": "PRODUCING",
+      "effectiveDate": "2022-05-01",
+      "expirationDate": null,
+      "primaryTerm": 36,
+      "royaltyRate": 0.25,
+      "netAcres": 320.0,
+      "grossAcres": 640.0,
+      "county": "Midland",
+      "state": "TX",
+      "lessor": "Smith Family Trust",
+      "lessee": "Acme Exploration LLC",
+      "hbpStatus": true,
+      "deepRightsReserved": false,
+      "surfaceWaiverObtained": true
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "quorum": "https://www.quorumsoftware.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+
+    "Lease": {
+      "@id": "schema:LicenseDocument",
+      "@type": "@id"
+    },
+    "leaseId": {
+      "@id": "schema:identifier"
+    },
+    "leaseName": {
+      "@id": "schema:name"
+    },
+    "status": {
+      "@id": "schema:status"
+    },
+    "effectiveDate": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "expirationDate": {
+      "@id": "schema:endDate",
+      "@type": "xsd:date"
+    },
+    "royaltyRate": {
+      "@id": "quorum:royaltyRate",
+      "@type": "xsd:decimal"
+    },
+    "netAcres": {
+      "@id": "quorum:netAcres",
+      "@type": "xsd:decimal"
+    },
+    "grossAcres": {
+      "@id": "quorum:grossAcres",
+      "@type": "xsd:decimal"
+    },
+    "county": {
+      "@id": "schema:addressLocality"
+    },
+    "state": {
+      "@id": "schema:addressRegion"
+    },
+    "lessor": {
+      "@id": "schema:seller"
+    },
+    "lessee": {
+      "@id": "schema:buyer"
+    },
+    "hbpStatus": {
+      "@id": "quorum:heldByProduction",
+      "@type": "xsd:boolean"
+    },
+
+    "Tract": {
+      "@id": "schema:LandForm",
+      "@type": "@id"
+    },
+    "tractId": {
+      "@id": "schema:identifier"
+    },
+    "legalDescription": {
+      "@id": "schema:description"
+    },
+    "latitude": {
+      "@id": "schema:latitude",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "schema:longitude",
+      "@type": "xsd:decimal"
+    },
+
+    "Well": {
+      "@id": "schema:MoneyTransfer",
+      "@type": "@id"
+    },
+    "wellId": {
+      "@id": "schema:identifier"
+    },
+    "wellName": {
+      "@id": "schema:name"
+    },
+    "apiNumber": {
+      "@id": "quorum:apiNumber"
+    },
+    "wellType": {
+      "@id": "quorum:wellType"
+    },
+    "spudDate": {
+      "@id": "quorum:spudDate",
+      "@type": "xsd:date"
+    },
+    "totalDepth": {
+      "@id": "quorum:totalDepth",
+      "@type": "xsd:decimal"
+    },
+    "formation": {
+      "@id": "quorum:formation"
+    },
+
+    "DivisionOrder": {
+      "@id": "schema:PaymentCard",
+      "@type": "@id"
+    },
+    "divisionOrderId": {
+      "@id": "schema:identifier"
+    },
+    "interestType": {
+      "@id": "quorum:interestType"
+    },
+    "decimalInterest": {
+      "@id": "quorum:decimalInterest",
+      "@type": "xsd:decimal"
+    },
+
+    "Owner": {
+      "@id": "schema:Person",
+      "@type": "@id"
+    },
+    "ownerId": {
+      "@id": "schema:identifier"
+    },
+    "ownerName": {
+      "@id": "schema:name"
+    },
+    "ownerType": {
+      "@id": "quorum:ownerType"
+    }
+  }
+}

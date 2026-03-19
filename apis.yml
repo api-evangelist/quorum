@@ -15,6 +15,8 @@ apis:
   properties:
   - url: https://www.quorumsoftware.com/
     type: Documentation
+  - url: openapi/quorum-land-management-openapi.yml
+    type: OpenAPI
   description: >-
     Quorum Land Management API provides access to land records, lease management, tract data, and division order information for upstream oil and gas exploration and production companies.
 
@@ -65,6 +67,12 @@ common:
   type: PrivacyPolicy
 - url: https://www.quorumsoftware.com/terms-and-conditions/
   type: TermsOfService
+- url: openapi/quorum-land-management-openapi.yml
+  type: OpenAPI
+- url: json-schema/quorum-lease-schema.json
+  type: JSONSchema
+- url: json-ld/quorum-context.jsonld
+  type: JSONLDContext
 maintainers:
 - name: Kin Lane
   email: kin@apievangelist.com

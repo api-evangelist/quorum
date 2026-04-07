@@ -21,17 +21,17 @@ security:
   - oauth2: []
 
 tags:
-  - name: Leases
-    description: Oil and gas lease management
-  - name: Tracts
-    description: Land tract records
   - name: DivisionOrders
     description: Division order management
-  - name: Wells
-    description: Well master data
+  - name: Leases
+    description: Oil and gas lease management
   - name: Owners
     description: Mineral interest owner management
 
+  - name: Tracts
+    description: Land tract records
+  - name: Wells
+    description: Well master data
 paths:
   /leases:
     get:

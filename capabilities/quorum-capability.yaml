@@ -1,0 +1,513 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Quorum Land Management API
+  description: Quorum Land Management API provides access to land records, lease management, tract data, division order information,
+    and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of
+    software solutions for the upstream oil and gas industry.
+  tags:
+  - Quorum
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: quorum
+    baseUri: https://api.quorumsoftware.com/v1
+    description: Quorum Land Management API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{QUORUM_TOKEN}}'
+    resources:
+    - name: leases
+      path: /leases
+      operations:
+      - name: listleases
+        method: GET
+        description: List leases
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter by lease status
+        - name: county
+          in: query
+          type: string
+          description: Filter by county name
+        - name: state
+          in: query
+          type: string
+          description: Filter by state (2-letter abbreviation)
+        - name: updatedSince
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createlease
+        method: POST
+        description: Create a lease
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: leases-leaseid
+      path: /leases/{leaseId}
+      operations:
+      - name: getlease
+        method: GET
+        description: Get a lease
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelease
+        method: PUT
+        description: Update a lease
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tracts
+      path: /tracts
+      operations:
+      - name: listtracts
+        method: GET
+        description: List tracts
+        inputParameters:
+        - name: leaseId
+          in: query
+          type: string
+          description: Filter by associated lease
+        - name: state
+          in: query
+          type: string
+        - name: county
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: division-orders
+      path: /division-orders
+      operations:
+      - name: listdivisionorders
+        method: GET
+        description: List division orders
+        inputParameters:
+        - name: wellId
+          in: query
+          type: string
+          description: Filter by well
+        - name: ownerId
+          in: query
+          type: string
+          description: Filter by owner
+        - name: status
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wells
+      path: /wells
+      operations:
+      - name: listwells
+        method: GET
+        description: List wells
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+        - name: state
+          in: query
+          type: string
+        - name: county
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: wells-wellid
+      path: /wells/{wellId}
+      operations:
+      - name: getwell
+        method: GET
+        description: Get a well
+        inputParameters:
+        - name: wellId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: owners
+      path: /owners
+      operations:
+      - name: listowners
+        method: GET
+        description: List mineral interest owners
+        inputParameters:
+        - name: ownerType
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: quorum-rest
+    description: REST adapter for Quorum Land Management API.
+    resources:
+    - path: /leases
+      name: listleases
+      operations:
+      - method: GET
+        name: listleases
+        description: List leases
+        call: quorum.listleases
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /leases
+      name: createlease
+      operations:
+      - method: POST
+        name: createlease
+        description: Create a lease
+        call: quorum.createlease
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /leases/{leaseId}
+      name: getlease
+      operations:
+      - method: GET
+        name: getlease
+        description: Get a lease
+        call: quorum.getlease
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /leases/{leaseId}
+      name: updatelease
+      operations:
+      - method: PUT
+        name: updatelease
+        description: Update a lease
+        call: quorum.updatelease
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /tracts
+      name: listtracts
+      operations:
+      - method: GET
+        name: listtracts
+        description: List tracts
+        call: quorum.listtracts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /division-orders
+      name: listdivisionorders
+      operations:
+      - method: GET
+        name: listdivisionorders
+        description: List division orders
+        call: quorum.listdivisionorders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wells
+      name: listwells
+      operations:
+      - method: GET
+        name: listwells
+        description: List wells
+        call: quorum.listwells
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /wells/{wellId}
+      name: getwell
+      operations:
+      - method: GET
+        name: getwell
+        description: Get a well
+        call: quorum.getwell
+        with:
+          wellId: rest.wellId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /owners
+      name: listowners
+      operations:
+      - method: GET
+        name: listowners
+        description: List mineral interest owners
+        call: quorum.listowners
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: quorum-mcp
+    transport: http
+    description: MCP adapter for Quorum Land Management API for AI agent use.
+    tools:
+    - name: listleases
+      description: List leases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quorum.listleases
+      with:
+        status: tools.status
+        county: tools.county
+        state: tools.state
+        updatedSince: tools.updatedSince
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: status
+        type: string
+        description: Filter by lease status
+      - name: county
+        type: string
+        description: Filter by county name
+      - name: state
+        type: string
+        description: Filter by state (2-letter abbreviation)
+      - name: updatedSince
+        type: string
+        description: updatedSince
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createlease
+      description: Create a lease
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: quorum.createlease
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getlease
+      description: Get a lease
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quorum.getlease
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatelease
+      description: Update a lease
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: quorum.updatelease
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtracts
+      description: List tracts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quorum.listtracts
+      with:
+        leaseId: tools.leaseId
+        state: tools.state
+        county: tools.county
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: leaseId
+        type: string
+        description: Filter by associated lease
+      - name: state
+        type: string
+        description: state
+      - name: county
+        type: string
+        description: county
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdivisionorders
+      description: List division orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quorum.listdivisionorders
+      with:
+        wellId: tools.wellId
+        ownerId: tools.ownerId
+        status: tools.status
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: wellId
+        type: string
+        description: Filter by well
+      - name: ownerId
+        type: string
+        description: Filter by owner
+      - name: status
+        type: string
+        description: status
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listwells
+      description: List wells
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quorum.listwells
+      with:
+        status: tools.status
+        state: tools.state
+        county: tools.county
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: status
+        type: string
+        description: status
+      - name: state
+        type: string
+        description: state
+      - name: county
+        type: string
+        description: county
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getwell
+      description: Get a well
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quorum.getwell
+      with:
+        wellId: tools.wellId
+      inputParameters:
+      - name: wellId
+        type: string
+        description: wellId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listowners
+      description: List mineral interest owners
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quorum.listowners
+      with:
+        ownerType: tools.ownerType
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: ownerType
+        type: string
+        description: ownerType
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    QUORUM_TOKEN: QUORUM_TOKEN

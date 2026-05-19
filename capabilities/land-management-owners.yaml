@@ -1,0 +1,88 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Quorum Land Management API — Owners
+  description: 'Quorum Land Management API — Owners. 1 operations. Lead operation: List mineral interest owners. Self-contained
+    Naftiko capability covering one Quorum business surface.'
+  tags:
+  - Quorum
+  - Owners
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    QUORUM_API_KEY: QUORUM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: land-management-owners
+    baseUri: https://api.quorumsoftware.com/v1
+    description: Quorum Land Management API — Owners business capability. Self-contained, no shared references.
+    resources:
+    - name: owners
+      path: /owners
+      operations:
+      - name: listowners
+        method: GET
+        description: List mineral interest owners
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ownerType
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+    authentication:
+      type: bearer
+      token: '{{env.QUORUM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: land-management-owners-rest
+    port: 8080
+    description: REST adapter for Quorum Land Management API — Owners. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/owners
+      name: owners
+      description: REST surface for owners.
+      operations:
+      - method: GET
+        name: listowners
+        description: List mineral interest owners
+        call: land-management-owners.listowners
+        with:
+          ownerType: rest.ownerType
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: land-management-owners-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Quorum Land Management API — Owners. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-mineral-interest-owners
+      description: List mineral interest owners
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: land-management-owners.listowners
+      with:
+        ownerType: tools.ownerType
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.

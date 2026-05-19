@@ -1,0 +1,208 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Quorum Land Management API — Leases
+  description: 'Quorum Land Management API — Leases. 4 operations. Lead operation: List leases. Self-contained Naftiko capability
+    covering one Quorum business surface.'
+  tags:
+  - Quorum
+  - Leases
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    QUORUM_API_KEY: QUORUM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: land-management-leases
+    baseUri: https://api.quorumsoftware.com/v1
+    description: Quorum Land Management API — Leases business capability. Self-contained, no shared references.
+    resources:
+    - name: leases
+      path: /leases
+      operations:
+      - name: listleases
+        method: GET
+        description: List leases
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter by lease status
+        - name: county
+          in: query
+          type: string
+          description: Filter by county name
+        - name: state
+          in: query
+          type: string
+          description: Filter by state (2-letter abbreviation)
+        - name: updatedSince
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+      - name: createlease
+        method: POST
+        description: Create a lease
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: leases-leaseId
+      path: /leases/{leaseId}
+      operations:
+      - name: getlease
+        method: GET
+        description: Get a lease
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelease
+        method: PUT
+        description: Update a lease
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.QUORUM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: land-management-leases-rest
+    port: 8080
+    description: REST adapter for Quorum Land Management API — Leases. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/leases
+      name: leases
+      description: REST surface for leases.
+      operations:
+      - method: GET
+        name: listleases
+        description: List leases
+        call: land-management-leases.listleases
+        with:
+          status: rest.status
+          county: rest.county
+          state: rest.state
+          updatedSince: rest.updatedSince
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createlease
+        description: Create a lease
+        call: land-management-leases.createlease
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/leases/{leaseid}
+      name: leases-leaseid
+      description: REST surface for leases-leaseId.
+      operations:
+      - method: GET
+        name: getlease
+        description: Get a lease
+        call: land-management-leases.getlease
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatelease
+        description: Update a lease
+        call: land-management-leases.updatelease
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: land-management-leases-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Quorum Land Management API — Leases. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-leases
+      description: List leases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: land-management-leases.listleases
+      with:
+        status: tools.status
+        county: tools.county
+        state: tools.state
+        updatedSince: tools.updatedSince
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-lease
+      description: Create a lease
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: land-management-leases.createlease
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-lease
+      description: Get a lease
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: land-management-leases.getlease
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-lease
+      description: Update a lease
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: land-management-leases.updatelease
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Quorum Land Management API — Tracts
+  description: 'Quorum Land Management API — Tracts. 1 operations. Lead operation: List tracts. Self-contained Naftiko capability
+    covering one Quorum business surface.'
+  tags:
+  - Quorum
+  - Tracts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    QUORUM_API_KEY: QUORUM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: land-management-tracts
+    baseUri: https://api.quorumsoftware.com/v1
+    description: Quorum Land Management API — Tracts business capability. Self-contained, no shared references.
+    resources:
+    - name: tracts
+      path: /tracts
+      operations:
+      - name: listtracts
+        method: GET
+        description: List tracts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: leaseId
+          in: query
+          type: string
+          description: Filter by associated lease
+        - name: state
+          in: query
+          type: string
+        - name: county
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+    authentication:
+      type: bearer
+      token: '{{env.QUORUM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: land-management-tracts-rest
+    port: 8080
+    description: REST adapter for Quorum Land Management API — Tracts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/tracts
+      name: tracts
+      description: REST surface for tracts.
+      operations:
+      - method: GET
+        name: listtracts
+        description: List tracts
+        call: land-management-tracts.listtracts
+        with:
+          leaseId: rest.leaseId
+          state: rest.state
+          county: rest.county
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: land-management-tracts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Quorum Land Management API — Tracts. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-tracts
+      description: List tracts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: land-management-tracts.listtracts
+      with:
+        leaseId: tools.leaseId
+        state: tools.state
+        county: tools.county
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -2,13 +2,13 @@
   "repo": "quorum",
   "feeds": [
     {
-      "source": "https://resources.quorumsoftware.com/blog",
-      "feed_url": "",
+      "source": "https://community.quorumsoftware.com/s/login/",
+      "feed_url": "https://community.quorumsoftware.com/s/login/",
       "title": "",
       "saved": 0,
-      "error": "no_feed"
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:48:52Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 0
 }

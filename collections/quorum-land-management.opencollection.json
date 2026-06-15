@@ -1,0 +1,327 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Quorum Land Management API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.quorumsoftware.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List leases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.quorumsoftware.com/v1/leases",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lease status"
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "Filter by county name"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter by state (2-letter abbreviation)"
+              },
+              {
+                "name": "updatedSince",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns oil and gas leases with status, terms, and acreage information."
+        },
+        {
+          "info": {
+            "name": "Create a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.quorumsoftware.com/v1/leases",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new oil and gas lease record."
+        },
+        {
+          "info": {
+            "name": "Get a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.quorumsoftware.com/v1/leases/:leaseId",
+            "params": [
+              {
+                "name": "leaseId",
+                "value": "",
+                "type": "path",
+                "description": "Quorum lease identifier"
+              }
+            ]
+          },
+          "docs": "Returns full details for an oil and gas lease."
+        },
+        {
+          "info": {
+            "name": "Update a lease",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.quorumsoftware.com/v1/leases/:leaseId",
+            "params": [
+              {
+                "name": "leaseId",
+                "value": "",
+                "type": "path",
+                "description": "Quorum lease identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates lease terms, status, or administrative data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.quorumsoftware.com/v1/tracts",
+            "params": [
+              {
+                "name": "leaseId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by associated lease"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns land tract records with legal description and acreage data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DivisionOrders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List division orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.quorumsoftware.com/v1/division-orders",
+            "params": [
+              {
+                "name": "wellId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by well"
+              },
+              {
+                "name": "ownerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by owner"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns division orders specifying owner decimal interest allocations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Wells",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List wells",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.quorumsoftware.com/v1/wells",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns well master data including API numbers, location, and production status."
+        },
+        {
+          "info": {
+            "name": "Get a well",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.quorumsoftware.com/v1/wells/:wellId",
+            "params": [
+              {
+                "name": "wellId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns well master record with API number, location, and status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Owners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List mineral interest owners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.quorumsoftware.com/v1/owners",
+            "params": [
+              {
+                "name": "ownerType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns mineral interest owners with contact and payment information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

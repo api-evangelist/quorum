@@ -1,0 +1,1346 @@
+{
+  "item": [
+    {
+      "id": "6cbb5782-826a-4ef9-88bf-0e96c7e7b9e4",
+      "name": "DivisionOrders",
+      "description": {
+        "content": "Division order management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b892beec-d873-4e87-8bf1-d62eaeb62806",
+          "name": "List division orders",
+          "request": {
+            "name": "List division orders",
+            "description": {
+              "content": "Returns division orders specifying owner decimal interest allocations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "division-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "wellId",
+                  "value": "<string>",
+                  "description": "Filter by well"
+                },
+                {
+                  "disabled": false,
+                  "key": "ownerId",
+                  "value": "<string>",
+                  "description": "Filter by owner"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96436216-caab-4e45-ba43-c9f5a50764f3",
+              "name": "Division order list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "division-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wellId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ownerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"divisionOrders\": [\n    {\n      \"divisionOrderId\": \"string\",\n      \"wellId\": \"string\",\n      \"ownerId\": \"string\",\n      \"ownerName\": \"string\",\n      \"status\": \"SUSPENDED\",\n      \"effectiveDate\": \"1958-06-17\",\n      \"interestType\": \"NET_PROFITS\",\n      \"decimalInterest\": 0.5339421312854731,\n      \"paymentMethod\": \"CHECK\",\n      \"taxId\": \"string\"\n    },\n    {\n      \"divisionOrderId\": \"string\",\n      \"wellId\": \"string\",\n      \"ownerId\": \"string\",\n      \"ownerName\": \"string\",\n      \"status\": \"ACTIVE\",\n      \"effectiveDate\": \"1996-03-11\",\n      \"interestType\": \"OVERRIDING_ROYALTY\",\n      \"decimalInterest\": 0.295157591159503,\n      \"paymentMethod\": \"ACH\",\n      \"taxId\": \"string\"\n    }\n  ],\n  \"totalCount\": 4917\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "72e5f652-7a3d-4ed2-ba51-0b524707e424",
+      "name": "Leases",
+      "description": {
+        "content": "Oil and gas lease management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f09ed661-7e30-404b-8dcc-bd3f041ff7f1",
+          "name": "List leases",
+          "request": {
+            "name": "List leases",
+            "description": {
+              "content": "Returns oil and gas leases with status, terms, and acreage information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by lease status"
+                },
+                {
+                  "disabled": false,
+                  "key": "county",
+                  "value": "<string>",
+                  "description": "Filter by county name"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Filter by state (2-letter abbreviation)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedSince",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cea4170a-0c5c-40ca-bd4a-6e005120dd0b",
+              "name": "Lease list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leases\": [\n    {\n      \"leaseId\": \"string\",\n      \"leaseName\": \"string\",\n      \"leaseNumber\": \"string\",\n      \"status\": \"EXPIRED\",\n      \"effectiveDate\": \"1994-06-04\",\n      \"expirationDate\": \"2021-06-07\",\n      \"primaryTerm\": 554,\n      \"royaltyRate\": 6297.277285999038,\n      \"netAcres\": 9184.759485935774,\n      \"grossAcres\": 6516.652215838906,\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"lessor\": \"string\",\n      \"lessee\": \"string\",\n      \"hbpStatus\": false,\n      \"createDatetime\": \"1989-08-03T00:10:02.286Z\",\n      \"lastUpdateDatetime\": \"1949-07-03T19:19:42.714Z\"\n    },\n    {\n      \"leaseId\": \"string\",\n      \"leaseName\": \"string\",\n      \"leaseNumber\": \"string\",\n      \"status\": \"SHUT_IN\",\n      \"effectiveDate\": \"2013-11-08\",\n      \"expirationDate\": \"1977-10-18\",\n      \"primaryTerm\": 724,\n      \"royaltyRate\": 1747.7264360872057,\n      \"netAcres\": 2286.7250085017586,\n      \"grossAcres\": 2701.7683061334387,\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"lessor\": \"string\",\n      \"lessee\": \"string\",\n      \"hbpStatus\": true,\n      \"createDatetime\": \"1958-09-23T16:02:13.300Z\",\n      \"lastUpdateDatetime\": \"1976-08-08T15:25:04.258Z\"\n    }\n  ],\n  \"totalCount\": 8498\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f370a9c-3482-4dbd-982e-3b595f5d59c1",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2bf83aff-863e-4d4d-add9-c1655dd5b3c8",
+          "name": "Create a lease",
+          "request": {
+            "name": "Create a lease",
+            "description": {
+              "content": "Creates a new oil and gas lease record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"leaseName\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"royaltyRate\": \"<double>\",\n  \"netAcres\": \"<double>\",\n  \"county\": \"<string>\",\n  \"state\": \"<string>\",\n  \"lessor\": \"<string>\",\n  \"leaseNumber\": \"<string>\",\n  \"primaryTerm\": \"<integer>\",\n  \"grossAcres\": \"<double>\",\n  \"lessee\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b7599650-e6c9-4e07-8859-976f8ae53711",
+              "name": "Lease created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leaseName\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"royaltyRate\": \"<double>\",\n  \"netAcres\": \"<double>\",\n  \"county\": \"<string>\",\n  \"state\": \"<string>\",\n  \"lessor\": \"<string>\",\n  \"leaseNumber\": \"<string>\",\n  \"primaryTerm\": \"<integer>\",\n  \"grossAcres\": \"<double>\",\n  \"lessee\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaseId\": \"string\",\n  \"leaseName\": \"string\",\n  \"leaseNumber\": \"string\",\n  \"status\": \"SHUT_IN\",\n  \"effectiveDate\": \"2015-11-27\",\n  \"expirationDate\": \"2000-09-25\",\n  \"primaryTerm\": 4959,\n  \"royaltyRate\": 6097.498091279148,\n  \"netAcres\": 1549.0753071330776,\n  \"grossAcres\": 5015.498278803629,\n  \"county\": \"string\",\n  \"state\": \"st\",\n  \"lessor\": \"string\",\n  \"lessee\": \"string\",\n  \"hbpStatus\": false,\n  \"createDatetime\": \"1985-03-12T11:28:28.311Z\",\n  \"lastUpdateDatetime\": \"1970-05-16T04:39:57.326Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e1cd9bd-4ddf-41d9-82b5-e5305044eccf",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"leaseName\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"royaltyRate\": \"<double>\",\n  \"netAcres\": \"<double>\",\n  \"county\": \"<string>\",\n  \"state\": \"<string>\",\n  \"lessor\": \"<string>\",\n  \"leaseNumber\": \"<string>\",\n  \"primaryTerm\": \"<integer>\",\n  \"grossAcres\": \"<double>\",\n  \"lessee\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c355f04-f03f-400b-a49e-7aa75f5fb2fd",
+          "name": "Get a lease",
+          "request": {
+            "name": "Get a lease",
+            "description": {
+              "content": "Returns full details for an oil and gas lease.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leases",
+                ":leaseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaseId",
+                  "description": "(Required) Quorum lease identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3c392fb-2887-4ad5-8f6c-700d979ac08a",
+              "name": "Lease details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leases",
+                    ":leaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaseId",
+                      "description": "(Required) Quorum lease identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaseId\": \"string\",\n  \"leaseName\": \"string\",\n  \"leaseNumber\": \"string\",\n  \"status\": \"SHUT_IN\",\n  \"effectiveDate\": \"2000-12-27\",\n  \"expirationDate\": \"2023-07-03\",\n  \"primaryTerm\": 8627,\n  \"royaltyRate\": 1101.638643234908,\n  \"netAcres\": 7331.876847925756,\n  \"grossAcres\": 5232.997095290566,\n  \"county\": \"string\",\n  \"state\": \"st\",\n  \"lessor\": \"string\",\n  \"lessee\": \"string\",\n  \"hbpStatus\": true,\n  \"createDatetime\": \"1992-07-17T00:56:46.339Z\",\n  \"lastUpdateDatetime\": \"1968-01-23T16:13:23.725Z\",\n  \"tracts\": [\n    {\n      \"tractId\": \"string\",\n      \"leaseId\": \"string\",\n      \"tractNumber\": \"string\",\n      \"legalDescription\": \"string\",\n      \"section\": \"string\",\n      \"township\": \"string\",\n      \"range\": \"string\",\n      \"meridian\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"netAcres\": 5091.210544925343,\n      \"grossAcres\": 2118.697124572292,\n      \"ownershipType\": \"WORKING_INTEREST\",\n      \"latitude\": 2215.4724076096845,\n      \"longitude\": 3595.994974523604\n    },\n    {\n      \"tractId\": \"string\",\n      \"leaseId\": \"string\",\n      \"tractNumber\": \"string\",\n      \"legalDescription\": \"string\",\n      \"section\": \"string\",\n      \"township\": \"string\",\n      \"range\": \"string\",\n      \"meridian\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"netAcres\": 1088.5547041468978,\n      \"grossAcres\": 7313.261508492705,\n      \"ownershipType\": \"WORKING_INTEREST\",\n      \"latitude\": 7612.526126796458,\n      \"longitude\": 8987.968864345003\n    }\n  ],\n  \"wells\": [\n    {\n      \"wellId\": \"string\",\n      \"wellName\": \"string\",\n      \"apiNumber\": \"string\"\n    },\n    {\n      \"wellId\": \"string\",\n      \"wellName\": \"string\",\n      \"apiNumber\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cab36990-85c1-4643-a6a1-814c3340f7a6",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leases",
+                    ":leaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaseId",
+                      "description": "(Required) Quorum lease identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3125994-e072-4049-90cd-2fcfef70151b",
+          "name": "Update a lease",
+          "request": {
+            "name": "Update a lease",
+            "description": {
+              "content": "Updates lease terms, status, or administrative data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leases",
+                ":leaseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaseId",
+                  "description": "(Required) Quorum lease identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"expirationDate\": \"<date>\",\n  \"royaltyRate\": \"<double>\",\n  \"hbpStatus\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7ef472e8-3311-4cee-a722-4659f38abc69",
+              "name": "Lease updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leases",
+                    ":leaseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaseId",
+                      "description": "(Required) Quorum lease identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"expirationDate\": \"<date>\",\n  \"royaltyRate\": \"<double>\",\n  \"hbpStatus\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaseId\": \"string\",\n  \"leaseName\": \"string\",\n  \"leaseNumber\": \"string\",\n  \"status\": \"SHUT_IN\",\n  \"effectiveDate\": \"2015-11-27\",\n  \"expirationDate\": \"2000-09-25\",\n  \"primaryTerm\": 4959,\n  \"royaltyRate\": 6097.498091279148,\n  \"netAcres\": 1549.0753071330776,\n  \"grossAcres\": 5015.498278803629,\n  \"county\": \"string\",\n  \"state\": \"st\",\n  \"lessor\": \"string\",\n  \"lessee\": \"string\",\n  \"hbpStatus\": false,\n  \"createDatetime\": \"1985-03-12T11:28:28.311Z\",\n  \"lastUpdateDatetime\": \"1970-05-16T04:39:57.326Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b88685a4-151d-4fc3-a0f5-822bddc07341",
+      "name": "Owners",
+      "description": {
+        "content": "Mineral interest owner management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31e5ba4a-a581-48e3-af35-462f008d001f",
+          "name": "List mineral interest owners",
+          "request": {
+            "name": "List mineral interest owners",
+            "description": {
+              "content": "Returns mineral interest owners with contact and payment information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4276bf2-63bd-426b-a16e-0f1914be11e0",
+              "name": "Owner list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owners\": [\n    {\n      \"ownerId\": \"string\",\n      \"ownerName\": \"string\",\n      \"ownerType\": \"INDIVIDUAL\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"st\",\n      \"zip\": \"string\",\n      \"country\": \"str\",\n      \"email\": \"eAqbXB8q@WYK.fea\",\n      \"phone\": \"string\",\n      \"taxId\": \"string\",\n      \"paymentMethod\": \"ACH\",\n      \"active\": true\n    },\n    {\n      \"ownerId\": \"string\",\n      \"ownerName\": \"string\",\n      \"ownerType\": \"TRUST\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"st\",\n      \"zip\": \"string\",\n      \"country\": \"str\",\n      \"email\": \"3Ui7h@bnJpugllqbBDbpyXgAMXyj.jo\",\n      \"phone\": \"string\",\n      \"taxId\": \"string\",\n      \"paymentMethod\": \"CHECK\",\n      \"active\": true\n    }\n  ],\n  \"totalCount\": 2932\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "df53f0f2-8195-4feb-94b6-29bc27700f67",
+      "name": "Tracts",
+      "description": {
+        "content": "Land tract records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "605163f7-4abf-4db9-976f-0cf8180a83c0",
+          "name": "List tracts",
+          "request": {
+            "name": "List tracts",
+            "description": {
+              "content": "Returns land tract records with legal description and acreage data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leaseId",
+                  "value": "<string>",
+                  "description": "Filter by associated lease"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "county",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d716f5b-4ca0-404f-b8d1-539b4f8e05a2",
+              "name": "Tract list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tracts\": [\n    {\n      \"tractId\": \"string\",\n      \"leaseId\": \"string\",\n      \"tractNumber\": \"string\",\n      \"legalDescription\": \"string\",\n      \"section\": \"string\",\n      \"township\": \"string\",\n      \"range\": \"string\",\n      \"meridian\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"netAcres\": 6441.860486243588,\n      \"grossAcres\": 3732.3920738092897,\n      \"ownershipType\": \"MINERAL\",\n      \"latitude\": 6392.93968081241,\n      \"longitude\": 1086.303963990015\n    },\n    {\n      \"tractId\": \"string\",\n      \"leaseId\": \"string\",\n      \"tractNumber\": \"string\",\n      \"legalDescription\": \"string\",\n      \"section\": \"string\",\n      \"township\": \"string\",\n      \"range\": \"string\",\n      \"meridian\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"netAcres\": 7380.091363368519,\n      \"grossAcres\": 3463.5293590340375,\n      \"ownershipType\": \"MINERAL\",\n      \"latitude\": 8646.860877777764,\n      \"longitude\": 589.6356006292635\n    }\n  ],\n  \"totalCount\": 3861\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "79b4bce7-d25b-4324-a617-bdab38460d89",
+      "name": "Wells",
+      "description": {
+        "content": "Well master data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e6474f8-3a89-4efa-8054-9f14372b784b",
+          "name": "List wells",
+          "request": {
+            "name": "List wells",
+            "description": {
+              "content": "Returns well master data including API numbers, location, and production status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wells"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "county",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c33be2dc-f28e-4885-b711-e5870c6b38a5",
+              "name": "Well list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wells"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wells\": [\n    {\n      \"wellId\": \"string\",\n      \"wellName\": \"string\",\n      \"apiNumber\": \"string\",\n      \"status\": \"DRILLING\",\n      \"wellType\": \"OIL_AND_GAS\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"latitude\": 3295.813752986343,\n      \"longitude\": 2771.059178478128,\n      \"spudDate\": \"2023-05-11\",\n      \"completionDate\": \"2007-11-02\",\n      \"totalDepth\": 8571.154420077557,\n      \"formation\": \"string\"\n    },\n    {\n      \"wellId\": \"string\",\n      \"wellName\": \"string\",\n      \"apiNumber\": \"string\",\n      \"status\": \"PRODUCING\",\n      \"wellType\": \"OIL_AND_GAS\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"latitude\": 2358.9684074187035,\n      \"longitude\": 772.9939628231297,\n      \"spudDate\": \"2005-05-07\",\n      \"completionDate\": \"1949-10-30\",\n      \"totalDepth\": 7220.52159391061,\n      \"formation\": \"string\"\n    }\n  ],\n  \"totalCount\": 369\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61fbfdef-2e24-418a-8653-49e00dad78c0",
+          "name": "Get a well",
+          "request": {
+            "name": "Get a well",
+            "description": {
+              "content": "Returns well master record with API number, location, and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wells",
+                ":wellId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wellId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "429af27b-4043-4786-b20b-b57d01271d7f",
+              "name": "Well details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wells",
+                    ":wellId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wellId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wellId\": \"string\",\n  \"wellName\": \"string\",\n  \"apiNumber\": \"string\",\n  \"status\": \"PRODUCING\",\n  \"wellType\": \"OIL_AND_GAS\",\n  \"county\": \"string\",\n  \"state\": \"st\",\n  \"latitude\": 971.6338779778522,\n  \"longitude\": 2375.8613466171396,\n  \"spudDate\": \"2021-06-07\",\n  \"completionDate\": \"1977-05-09\",\n  \"totalDepth\": 205.4116374120707,\n  \"formation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42fe2f7e-6a55-4071-8519-38f19d2cebbb",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wells",
+                    ":wellId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wellId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.quorumsoftware.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "land.read land.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.quorumsoftware.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "563c9846-25f5-4545-b8e0-c71561c43ace",
+    "name": "Quorum Land Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.\n\nContact Support:\n Name: Quorum Support",
+      "type": "text/plain"
+    }
+  }
+}

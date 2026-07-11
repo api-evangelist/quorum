@@ -70,6 +70,10 @@ apis:
       - type: Documentation
         url: https://www.quorumsoftware.com/
 common:
+  - type: TrustCenter
+    url: security/quorum-trust-center.yml
+  - type: DomainSecurity
+    url: security/quorum-domain-security.yml
   - type: Authentication
     url: authentication/quorum-authentication.yml
   - type: OAuthScopes

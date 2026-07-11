@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/quorum-land-management-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/quorum-land-management-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.quorumsoftware.com/oauth2/token
+scopes:
+- scope: land.read
+  description: Read land management data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/quorum-land-management-openapi.yml
+- scope: land.write
+  description: Write land management data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/quorum-land-management-openapi.yml

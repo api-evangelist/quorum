@@ -70,6 +70,10 @@ apis:
       - type: Documentation
         url: https://www.quorumsoftware.com/
 common:
+  - type: Authentication
+    url: authentication/quorum-authentication.yml
+  - type: OAuthScopes
+    url: scopes/quorum-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/QuorumUS
   - type: LinkedIn

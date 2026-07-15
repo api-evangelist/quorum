@@ -70,6 +70,8 @@ apis:
       - type: Documentation
         url: https://www.quorumsoftware.com/
 common:
+  - type: AgenticAccess
+    url: agentic-access/quorum-agentic-access.yml
   - type: TrustCenter
     url: security/quorum-trust-center.yml
   - type: DomainSecurity

@@ -1,0 +1,176 @@
+openapi: 3.1.0
+info:
+  title: Quorum Land Management DivisionOrders Wells API
+  description: Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.
+  version: 1.0.0
+  contact:
+    name: Quorum Support
+    url: https://community.quorumsoftware.com
+  license:
+    name: Quorum Software Terms of Service
+    url: https://www.quorumsoftware.com/terms-and-conditions/
+servers:
+- url: https://api.quorumsoftware.com/v1
+  description: Quorum API
+security:
+- oauth2: []
+tags:
+- name: Wells
+  description: Well master data
+paths:
+  /wells:
+    get:
+      operationId: listWells
+      summary: List wells
+      description: Returns well master data including API numbers, location, and production status.
+      tags:
+      - Wells
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - PRODUCING
+          - SHUT_IN
+          - ABANDONED
+          - PLUGGED
+          - DRILLING
+          - COMPLETED
+      - name: state
+        in: query
+        schema:
+          type: string
+          maxLength: 2
+      - name: county
+        in: query
+        schema:
+          type: string
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Well list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wells:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Well'
+                  totalCount:
+                    type: integer
+  /wells/{wellId}:
+    get:
+      operationId: getWell
+      summary: Get a well
+      description: Returns well master record with API number, location, and status.
+      tags:
+      - Wells
+      parameters:
+      - name: wellId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Well details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Well'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    Well:
+      type: object
+      description: An oil and gas well
+      properties:
+        wellId:
+          type: string
+        wellName:
+          type: string
+        apiNumber:
+          type: string
+          description: American Petroleum Institute well number (10 or 14 digits)
+        status:
+          type: string
+          enum:
+          - PRODUCING
+          - SHUT_IN
+          - ABANDONED
+          - PLUGGED
+          - DRILLING
+          - COMPLETED
+        wellType:
+          type: string
+          enum:
+          - OIL
+          - GAS
+          - OIL_AND_GAS
+          - WATER_INJECTION
+          - WATER_DISPOSAL
+          - DRY_HOLE
+        county:
+          type: string
+        state:
+          type: string
+          maxLength: 2
+        latitude:
+          type: number
+          format: double
+          nullable: true
+        longitude:
+          type: number
+          format: double
+          nullable: true
+        spudDate:
+          type: string
+          format: date
+          nullable: true
+        completionDate:
+          type: string
+          format: date
+          nullable: true
+        totalDepth:
+          type: number
+          format: double
+          description: Total depth in feet
+        formation:
+          type: string
+          description: Primary producing formation
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.quorumsoftware.com/oauth2/token
+          scopes:
+            land.read: Read land management data
+            land.write: Write land management data

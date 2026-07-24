@@ -1,0 +1,125 @@
+openapi: 3.1.0
+info:
+  title: Quorum Land Management DivisionOrders API
+  description: Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.
+  version: 1.0.0
+  contact:
+    name: Quorum Support
+    url: https://community.quorumsoftware.com
+  license:
+    name: Quorum Software Terms of Service
+    url: https://www.quorumsoftware.com/terms-and-conditions/
+servers:
+- url: https://api.quorumsoftware.com/v1
+  description: Quorum API
+security:
+- oauth2: []
+tags:
+- name: DivisionOrders
+  description: Division order management
+paths:
+  /division-orders:
+    get:
+      operationId: listDivisionOrders
+      summary: List division orders
+      description: Returns division orders specifying owner decimal interest allocations.
+      tags:
+      - DivisionOrders
+      parameters:
+      - name: wellId
+        in: query
+        description: Filter by well
+        schema:
+          type: string
+      - name: ownerId
+        in: query
+        description: Filter by owner
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - CANCELLED
+          - SUSPENDED
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Division order list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  divisionOrders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DivisionOrder'
+                  totalCount:
+                    type: integer
+components:
+  schemas:
+    DivisionOrder:
+      type: object
+      description: A division order specifying owner decimal interest allocation
+      properties:
+        divisionOrderId:
+          type: string
+        wellId:
+          type: string
+        ownerId:
+          type: string
+        ownerName:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - CANCELLED
+          - SUSPENDED
+        effectiveDate:
+          type: string
+          format: date
+        interestType:
+          type: string
+          enum:
+          - WORKING_INTEREST
+          - ROYALTY
+          - OVERRIDING_ROYALTY
+          - NET_PROFITS
+          - PRODUCTION_PAYMENT
+        decimalInterest:
+          type: number
+          format: double
+          description: Decimal fraction of production (e.g., 0.0625 = 6.25%)
+          minimum: 0
+          maximum: 1
+        paymentMethod:
+          type: string
+          enum:
+          - CHECK
+          - ACH
+          - WIRE
+        taxId:
+          type: string
+          description: Owner tax identification number (masked)
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.quorumsoftware.com/oauth2/token
+          scopes:
+            land.read: Read land management data
+            land.write: Write land management data

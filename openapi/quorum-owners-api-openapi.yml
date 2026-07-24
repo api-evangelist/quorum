@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: Quorum Land Management DivisionOrders Owners API
+  description: Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.
+  version: 1.0.0
+  contact:
+    name: Quorum Support
+    url: https://community.quorumsoftware.com
+  license:
+    name: Quorum Software Terms of Service
+    url: https://www.quorumsoftware.com/terms-and-conditions/
+servers:
+- url: https://api.quorumsoftware.com/v1
+  description: Quorum API
+security:
+- oauth2: []
+tags:
+- name: Owners
+  description: Mineral interest owner management
+paths:
+  /owners:
+    get:
+      operationId: listOwners
+      summary: List mineral interest owners
+      description: Returns mineral interest owners with contact and payment information.
+      tags:
+      - Owners
+      parameters:
+      - name: ownerType
+        in: query
+        schema:
+          type: string
+          enum:
+          - INDIVIDUAL
+          - COMPANY
+          - TRUST
+          - ESTATE
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Owner list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  owners:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Owner'
+                  totalCount:
+                    type: integer
+components:
+  schemas:
+    Owner:
+      type: object
+      description: A mineral interest owner
+      properties:
+        ownerId:
+          type: string
+        ownerName:
+          type: string
+        ownerType:
+          type: string
+          enum:
+          - INDIVIDUAL
+          - COMPANY
+          - TRUST
+          - ESTATE
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          maxLength: 2
+        zip:
+          type: string
+        country:
+          type: string
+          maxLength: 3
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        taxId:
+          type: string
+          description: Masked tax ID (last 4 only)
+        paymentMethod:
+          type: string
+          enum:
+          - CHECK
+          - ACH
+          - WIRE
+        active:
+          type: boolean
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.quorumsoftware.com/oauth2/token
+          scopes:
+            land.read: Read land management data
+            land.write: Write land management data

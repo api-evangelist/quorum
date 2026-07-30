@@ -4,6 +4,19 @@ description: >-
   Quorum Software is a leading provider of energy software for upstream oil and gas operations, providing solutions for
   land management, royalty accounting, production reporting, and operational data management.
 type: Index
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.quorumsoftware.com/hubfs/quorum-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/quorum/refs/heads/main/apis.yml
 tags:
@@ -17,58 +30,116 @@ created: '2026-03-18'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: quorum:quorum-land-management-api
-    name: Quorum Land Management API
-    description: >-
-      Quorum Land Management API provides access to land records, lease management, tract data, and division order
-      information for upstream oil and gas exploration and production companies.
-    humanURL: https://www.quorumsoftware.com/
-    baseURL: https://api.quorumsoftware.com/v1
-    tags:
-      - Energy
-      - Oil & Gas
-      - Upstream
-      - Land
-      - REST
-    properties:
-      - type: Documentation
-        url: https://www.quorumsoftware.com/
-      - type: OpenAPI
-        url: openapi/quorum-land-management-openapi.yml
-      - type: JSONSchema
-        url: json-schema/quorum-lease-schema.json
-      - type: JSONLDContext
-        url: json-ld/quorum-context.jsonld
-  - aid: quorum:quorum-royalty-accounting-api
-    name: Quorum Royalty Accounting API
-    description: >-
-      Quorum Royalty Accounting API enables access to royalty payment calculations, owner statements, suspense
-      management, and title data for oil and gas mineral rights owners and operators.
-    humanURL: https://www.quorumsoftware.com/
-    tags:
-      - Energy
-      - Oil & Gas
-      - Royalty
-      - Accounting
-      - REST
-    properties:
-      - type: Documentation
-        url: https://www.quorumsoftware.com/
-  - aid: quorum:quorum-production-reporting-api
-    name: Quorum Production Reporting API
-    description: >-
-      Quorum Production Reporting API provides access to well production volumes, allocations, gas balancing, and
-      regulatory reporting data for upstream oil and gas operations.
-    humanURL: https://www.quorumsoftware.com/
-    tags:
-      - Energy
-      - Oil & Gas
-      - Production
-      - Reporting
-      - REST
-    properties:
-      - type: Documentation
-        url: https://www.quorumsoftware.com/
+- aid: quorum:quorum-royalty-accounting-api
+  name: Quorum Royalty Accounting API
+  description: >-
+    Quorum Royalty Accounting API enables access to royalty payment calculations, owner statements, suspense
+    management, and title data for oil and gas mineral rights owners and operators.
+  humanURL: https://www.quorumsoftware.com/
+  tags:
+  - Energy
+  - Oil & Gas
+  - Royalty
+  - Accounting
+  - REST
+  properties:
+  - type: Documentation
+    url: https://www.quorumsoftware.com/
+- aid: quorum:quorum-production-reporting-api
+  name: Quorum Production Reporting API
+  description: >-
+    Quorum Production Reporting API provides access to well production volumes, allocations, gas balancing,
+    and regulatory reporting data for upstream oil and gas operations.
+  humanURL: https://www.quorumsoftware.com/
+  tags:
+  - Energy
+  - Oil & Gas
+  - Production
+  - Reporting
+  - REST
+  properties:
+  - type: Documentation
+    url: https://www.quorumsoftware.com/
+- aid: quorum:quorum-divisionorders-api
+  name: Quorum Software DivisionOrders API
+  description: Division order management
+  humanURL: https://www.quorumsoftware.com/
+  baseURL: https://api.quorumsoftware.com/v1
+  tags:
+  - DivisionOrders
+  properties:
+  - type: OpenAPI
+    url: openapi/quorum-divisionorders-api-openapi.yml
+  - type: Documentation
+    url: https://www.quorumsoftware.com/
+  - type: JSONSchema
+    url: json-schema/quorum-lease-schema.json
+  - type: JSONLDContext
+    url: json-ld/quorum-context.jsonld
+- aid: quorum:quorum-leases-api
+  name: Quorum Software Leases API
+  description: Oil and gas lease management
+  humanURL: https://www.quorumsoftware.com/
+  baseURL: https://api.quorumsoftware.com/v1
+  tags:
+  - Leases
+  properties:
+  - type: OpenAPI
+    url: openapi/quorum-leases-api-openapi.yml
+  - type: Documentation
+    url: https://www.quorumsoftware.com/
+  - type: JSONSchema
+    url: json-schema/quorum-lease-schema.json
+  - type: JSONLDContext
+    url: json-ld/quorum-context.jsonld
+- aid: quorum:quorum-owners-api
+  name: Quorum Software Owners API
+  description: Mineral interest owner management
+  humanURL: https://www.quorumsoftware.com/
+  baseURL: https://api.quorumsoftware.com/v1
+  tags:
+  - Owners
+  properties:
+  - type: OpenAPI
+    url: openapi/quorum-owners-api-openapi.yml
+  - type: Documentation
+    url: https://www.quorumsoftware.com/
+  - type: JSONSchema
+    url: json-schema/quorum-lease-schema.json
+  - type: JSONLDContext
+    url: json-ld/quorum-context.jsonld
+- aid: quorum:quorum-tracts-api
+  name: Quorum Software Tracts API
+  description: Land tract records
+  humanURL: https://www.quorumsoftware.com/
+  baseURL: https://api.quorumsoftware.com/v1
+  tags:
+  - Tracts
+  properties:
+  - type: OpenAPI
+    url: openapi/quorum-tracts-api-openapi.yml
+  - type: Documentation
+    url: https://www.quorumsoftware.com/
+  - type: JSONSchema
+    url: json-schema/quorum-lease-schema.json
+  - type: JSONLDContext
+    url: json-ld/quorum-context.jsonld
+- aid: quorum:quorum-wells-api
+  name: Quorum Software Wells API
+  description: Well master data
+  humanURL: https://www.quorumsoftware.com/
+  baseURL: https://api.quorumsoftware.com/v1
+  tags:
+  - Wells
+  properties:
+  - type: OpenAPI
+    url: openapi/quorum-wells-api-openapi.yml
+  - type: Documentation
+    url: https://www.quorumsoftware.com/
+  - type: JSONSchema
+    url: json-schema/quorum-lease-schema.json
+  - type: JSONLDContext
+    url: json-ld/quorum-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/quorum-agentic-access.yml

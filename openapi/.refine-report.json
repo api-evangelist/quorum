@@ -1,0 +1,22 @@
+{
+  "provider": "quorum",
+  "sources": [
+    "quorum-divisionorders-api-openapi.yml",
+    "quorum-leases-api-openapi.yml",
+    "quorum-owners-api-openapi.yml",
+    "quorum-tracts-api-openapi.yml",
+    "quorum-wells-api-openapi.yml"
+  ],
+  "outputs": [
+    "quorum-divisionorders-api-openapi.yml",
+    "quorum-leases-api-openapi.yml",
+    "quorum-owners-api-openapi.yml",
+    "quorum-tracts-api-openapi.yml",
+    "quorum-wells-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

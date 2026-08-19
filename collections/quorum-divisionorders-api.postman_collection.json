@@ -1,0 +1,176 @@
+{
+  "item": [
+    {
+      "id": "86f00209-64dd-4cd3-af26-2f416c14a6b6",
+      "name": "DivisionOrders",
+      "description": {
+        "content": "Division order management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7532fe6-f305-45cd-b232-e3a76926e492",
+          "name": "List division orders",
+          "request": {
+            "name": "List division orders",
+            "description": {
+              "content": "Returns division orders specifying owner decimal interest allocations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "division-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "wellId",
+                  "value": "<string>",
+                  "description": "Filter by well"
+                },
+                {
+                  "disabled": false,
+                  "key": "ownerId",
+                  "value": "<string>",
+                  "description": "Filter by owner"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e53542a-00d9-4c0a-a360-3bc11e835be2",
+              "name": "Division order list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "division-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "wellId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ownerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"divisionOrders\": [\n    {\n      \"divisionOrderId\": \"string\",\n      \"wellId\": \"string\",\n      \"ownerId\": \"string\",\n      \"ownerName\": \"string\",\n      \"status\": \"ACTIVE\",\n      \"effectiveDate\": \"2000-06-08\",\n      \"interestType\": \"PRODUCTION_PAYMENT\",\n      \"decimalInterest\": 0.4160275626003277,\n      \"paymentMethod\": \"CHECK\",\n      \"taxId\": \"string\"\n    },\n    {\n      \"divisionOrderId\": \"string\",\n      \"wellId\": \"string\",\n      \"ownerId\": \"string\",\n      \"ownerName\": \"string\",\n      \"status\": \"SUSPENDED\",\n      \"effectiveDate\": \"1967-04-30\",\n      \"interestType\": \"OVERRIDING_ROYALTY\",\n      \"decimalInterest\": 0.6161163108904275,\n      \"paymentMethod\": \"WIRE\",\n      \"taxId\": \"string\"\n    }\n  ],\n  \"totalCount\": 2613\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.quorumsoftware.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "land.read land.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.quorumsoftware.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "43a8e063-0144-4942-96ca-ec554178481f",
+    "name": "Quorum Land Management DivisionOrders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.\n\nContact Support:\n Name: Quorum Support",
+      "type": "text/plain"
+    }
+  }
+}

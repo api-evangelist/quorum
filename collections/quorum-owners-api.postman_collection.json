@@ -1,0 +1,156 @@
+{
+  "item": [
+    {
+      "id": "3efbece1-696b-442c-808a-63fde678bbcf",
+      "name": "Owners",
+      "description": {
+        "content": "Mineral interest owner management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c15df7e0-3a51-4c4a-bd22-145a084b9f49",
+          "name": "List mineral interest owners",
+          "request": {
+            "name": "List mineral interest owners",
+            "description": {
+              "content": "Returns mineral interest owners with contact and payment information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ownerType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b44d97dd-cf1f-4a1b-8568-0ba0df5d3906",
+              "name": "Owner list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ownerType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owners\": [\n    {\n      \"ownerId\": \"string\",\n      \"ownerName\": \"string\",\n      \"ownerType\": \"ESTATE\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"st\",\n      \"zip\": \"string\",\n      \"country\": \"str\",\n      \"email\": \"UmQUgDdxpWL@xrEpqsacp.xlsu\",\n      \"phone\": \"string\",\n      \"taxId\": \"string\",\n      \"paymentMethod\": \"WIRE\",\n      \"active\": false\n    },\n    {\n      \"ownerId\": \"string\",\n      \"ownerName\": \"string\",\n      \"ownerType\": \"COMPANY\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"st\",\n      \"zip\": \"string\",\n      \"country\": \"str\",\n      \"email\": \"FUVD9q1@fxohzVa.bd\",\n      \"phone\": \"string\",\n      \"taxId\": \"string\",\n      \"paymentMethod\": \"CHECK\",\n      \"active\": true\n    }\n  ],\n  \"totalCount\": 1568\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.quorumsoftware.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "land.read land.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.quorumsoftware.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e1015925-8094-4316-b9ae-0fa32fcbe559",
+    "name": "Quorum Land Management DivisionOrders Owners API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.\n\nContact Support:\n Name: Quorum Support",
+      "type": "text/plain"
+    }
+  }
+}

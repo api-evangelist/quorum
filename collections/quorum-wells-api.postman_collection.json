@@ -1,0 +1,322 @@
+{
+  "item": [
+    {
+      "id": "76179d8d-980b-43ab-9c5d-ddc61a5601f9",
+      "name": "Wells",
+      "description": {
+        "content": "Well master data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01e057c2-458e-408f-86c8-6423201bc1c5",
+          "name": "List wells",
+          "request": {
+            "name": "List wells",
+            "description": {
+              "content": "Returns well master data including API numbers, location, and production status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wells"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "county",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a49bb804-2577-4c3d-8d07-7c933d11f0cd",
+              "name": "Well list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wells"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wells\": [\n    {\n      \"wellId\": \"string\",\n      \"wellName\": \"string\",\n      \"apiNumber\": \"string\",\n      \"status\": \"PRODUCING\",\n      \"wellType\": \"GAS\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"latitude\": 2691.5645497406504,\n      \"longitude\": 6645.725608635818,\n      \"spudDate\": \"1956-05-22\",\n      \"completionDate\": \"1954-07-06\",\n      \"totalDepth\": 6049.793239012822,\n      \"formation\": \"string\"\n    },\n    {\n      \"wellId\": \"string\",\n      \"wellName\": \"string\",\n      \"apiNumber\": \"string\",\n      \"status\": \"COMPLETED\",\n      \"wellType\": \"GAS\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"latitude\": 3335.532431473941,\n      \"longitude\": 1003.6627679514799,\n      \"spudDate\": \"1974-08-19\",\n      \"completionDate\": \"2010-01-25\",\n      \"totalDepth\": 3979.877104723436,\n      \"formation\": \"string\"\n    }\n  ],\n  \"totalCount\": 6166\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb4d2c8e-734f-48bc-86e8-76815bb6ae02",
+          "name": "Get a well",
+          "request": {
+            "name": "Get a well",
+            "description": {
+              "content": "Returns well master record with API number, location, and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wells",
+                ":wellId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wellId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fdcb157-307f-4b3c-9411-26f5ebe8fbaa",
+              "name": "Well details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wells",
+                    ":wellId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wellId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wellId\": \"string\",\n  \"wellName\": \"string\",\n  \"apiNumber\": \"string\",\n  \"status\": \"PLUGGED\",\n  \"wellType\": \"WATER_DISPOSAL\",\n  \"county\": \"string\",\n  \"state\": \"st\",\n  \"latitude\": 6350.4941237634785,\n  \"longitude\": 7994.176596933319,\n  \"spudDate\": \"2007-08-18\",\n  \"completionDate\": \"1980-11-24\",\n  \"totalDepth\": 8973.385204462822,\n  \"formation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1677d7d4-6cac-438c-8b52-e5de77dbbeb7",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wells",
+                    ":wellId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wellId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.quorumsoftware.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "land.read land.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.quorumsoftware.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a0399b73-d3f5-444c-a279-b4b3dc0f9b95",
+    "name": "Quorum Land Management DivisionOrders Wells API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.\n\nContact Support:\n Name: Quorum Support",
+      "type": "text/plain"
+    }
+  }
+}

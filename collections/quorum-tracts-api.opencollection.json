@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Quorum Land Management DivisionOrders Tracts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.quorumsoftware.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.quorumsoftware.com/v1/tracts",
+            "params": [
+              {
+                "name": "leaseId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by associated lease"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns land tract records with legal description and acreage data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

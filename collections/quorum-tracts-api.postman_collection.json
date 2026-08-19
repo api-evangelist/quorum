@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "d89bd925-ad0e-4bf8-bab0-2d6d581d6135",
+      "name": "Tracts",
+      "description": {
+        "content": "Land tract records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58f53616-1849-40f4-a937-4cb008add22f",
+          "name": "List tracts",
+          "request": {
+            "name": "List tracts",
+            "description": {
+              "content": "Returns land tract records with legal description and acreage data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leaseId",
+                  "value": "<string>",
+                  "description": "Filter by associated lease"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "county",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be748b97-e5ea-447d-8d6c-fff0670808f2",
+              "name": "Tract list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tracts\": [\n    {\n      \"tractId\": \"string\",\n      \"leaseId\": \"string\",\n      \"tractNumber\": \"string\",\n      \"legalDescription\": \"string\",\n      \"section\": \"string\",\n      \"township\": \"string\",\n      \"range\": \"string\",\n      \"meridian\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"netAcres\": 3169.6648146559037,\n      \"grossAcres\": 3457.378554562476,\n      \"ownershipType\": \"WORKING_INTEREST\",\n      \"latitude\": 8102.784910206939,\n      \"longitude\": 8365.21907866838\n    },\n    {\n      \"tractId\": \"string\",\n      \"leaseId\": \"string\",\n      \"tractNumber\": \"string\",\n      \"legalDescription\": \"string\",\n      \"section\": \"string\",\n      \"township\": \"string\",\n      \"range\": \"string\",\n      \"meridian\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"st\",\n      \"netAcres\": 1192.6006624163742,\n      \"grossAcres\": 8120.412218207135,\n      \"ownershipType\": \"MINERAL\",\n      \"latitude\": 1179.3135672020937,\n      \"longitude\": 8067.852295127918\n    }\n  ],\n  \"totalCount\": 1540\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.quorumsoftware.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "land.read land.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.quorumsoftware.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "24b4baf5-13cf-43b1-9e62-15dd233b93a9",
+    "name": "Quorum Land Management DivisionOrders Tracts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.\n\nContact Support:\n Name: Quorum Support",
+      "type": "text/plain"
+    }
+  }
+}

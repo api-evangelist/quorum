@@ -33,7 +33,7 @@ image: https://www.quorumsoftware.com/hubfs/quorum-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/quorum/refs/heads/main/apis.yml
 tags:
   - Energy
-  - Oil and Gas
+  - Oil & Gas
   - Upstream
   - Land Management
   - Royalty Accounting
@@ -57,7 +57,7 @@ apis:
   humanURL: https://www.quorumsoftware.com/
   tags:
   - Energy
-  - Oil and Gas
+  - Oil & Gas
   - Royalty
   - Accounting
   - REST
@@ -78,7 +78,7 @@ apis:
   humanURL: https://www.quorumsoftware.com/
   tags:
   - Energy
-  - Oil and Gas
+  - Oil & Gas
   - Production
   - Reporting
   - REST
@@ -97,7 +97,7 @@ apis:
   humanURL: https://www.quorumsoftware.com/
   baseURL: https://api.quorumsoftware.com/v1
   tags:
-  - Division Orders
+  - DivisionOrders
   tags_raw:
   - DivisionOrders
   properties:

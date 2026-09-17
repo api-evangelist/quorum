@@ -91,24 +91,6 @@ apis:
   properties:
   - type: Documentation
     url: https://www.quorumsoftware.com/
-- aid: quorum:quorum-divisionorders-api
-  name: Quorum Software DivisionOrders API
-  description: Division order management
-  humanURL: https://www.quorumsoftware.com/
-  baseURL: https://api.quorumsoftware.com/v1
-  tags:
-  - Division Orders
-  tags_raw:
-  - DivisionOrders
-  properties:
-  - type: OpenAPI
-    url: openapi/quorum-divisionorders-api-openapi.yml
-  - type: Documentation
-    url: https://www.quorumsoftware.com/
-  - type: JSONSchema
-    url: json-schema/quorum-lease-schema.json
-  - type: JSONLDContext
-    url: json-ld/quorum-context.jsonld
 - aid: quorum:quorum-leases-api
   name: Quorum Software Leases API
   description: Oil and gas lease management
@@ -167,6 +149,22 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/quorum-wells-api-openapi.yml
+  - type: Documentation
+    url: https://www.quorumsoftware.com/
+  - type: JSONSchema
+    url: json-schema/quorum-lease-schema.json
+  - type: JSONLDContext
+    url: json-ld/quorum-context.jsonld
+- aid: quorum:quorum-division-orders-api
+  name: Quorum Software Division Orders API
+  description: Division order management
+  humanURL: https://www.quorumsoftware.com/
+  baseURL: https://api.quorumsoftware.com/v1
+  tags:
+  - Division Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/quorum-division-orders-api-openapi.yml
   - type: Documentation
     url: https://www.quorumsoftware.com/
   - type: JSONSchema

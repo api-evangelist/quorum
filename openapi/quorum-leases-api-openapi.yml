@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Quorum Land Management DivisionOrders Leases API
+  title: Quorum Land Management Leases API
   description: Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.
   version: 1.0.0
   contact:
@@ -142,139 +142,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/Lease'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Tract:
-      type: object
-      description: A land tract with legal description
-      properties:
-        tractId:
-          type: string
-        leaseId:
-          type: string
-        tractNumber:
-          type: string
-        legalDescription:
-          type: string
-          description: Full legal land description (section/township/range/meridian)
-        section:
-          type: string
-        township:
-          type: string
-        range:
-          type: string
-        meridian:
-          type: string
-        county:
-          type: string
-        state:
-          type: string
-          maxLength: 2
-        netAcres:
-          type: number
-          format: double
-        grossAcres:
-          type: number
-          format: double
-        ownershipType:
-          type: string
-          enum:
-          - MINERAL
-          - SURFACE
-          - ROYALTY
-          - WORKING_INTEREST
-        latitude:
-          type: number
-          format: double
-          nullable: true
-        longitude:
-          type: number
-          format: double
-          nullable: true
-    LeaseUpdate:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - EXPIRED
-          - SURRENDERED
-          - HELD_BY_PRODUCTION
-          - PRODUCING
-          - SHUT_IN
-        expirationDate:
-          type: string
-          format: date
-        royaltyRate:
-          type: number
-          format: double
-        hbpStatus:
-          type: boolean
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    LeaseCreate:
-      type: object
-      required:
-      - leaseName
-      - effectiveDate
-      - royaltyRate
-      - netAcres
-      - county
-      - state
-      - lessor
-      properties:
-        leaseName:
-          type: string
-        leaseNumber:
-          type: string
-        effectiveDate:
-          type: string
-          format: date
-        primaryTerm:
-          type: integer
-        royaltyRate:
-          type: number
-          format: double
-        netAcres:
-          type: number
-          format: double
-        grossAcres:
-          type: number
-          format: double
-        county:
-          type: string
-        state:
-          type: string
-          maxLength: 2
-        lessor:
-          type: string
-        lessee:
-          type: string
-    LeaseDetail:
-      allOf:
-      - $ref: '#/components/schemas/Lease'
-      - type: object
-        properties:
-          tracts:
-            type: array
-            items:
-              $ref: '#/components/schemas/Tract'
-          wells:
-            type: array
-            items:
-              type: object
-              properties:
-                wellId:
-                  type: string
-                wellName:
-                  type: string
-                apiNumber:
-                  type: string
     Lease:
       type: object
       description: An oil and gas lease
@@ -340,6 +227,138 @@ components:
         lastUpdateDatetime:
           type: string
           format: date-time
+    LeaseDetail:
+      allOf:
+      - $ref: '#/components/schemas/Lease'
+      - type: object
+        properties:
+          tracts:
+            type: array
+            items:
+              $ref: '#/components/schemas/Tract'
+          wells:
+            type: array
+            items:
+              type: object
+              properties:
+                wellId:
+                  type: string
+                wellName:
+                  type: string
+                apiNumber:
+                  type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    LeaseCreate:
+      type: object
+      required:
+      - leaseName
+      - effectiveDate
+      - royaltyRate
+      - netAcres
+      - county
+      - state
+      - lessor
+      properties:
+        leaseName:
+          type: string
+        leaseNumber:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        primaryTerm:
+          type: integer
+        royaltyRate:
+          type: number
+          format: double
+        netAcres:
+          type: number
+          format: double
+        grossAcres:
+          type: number
+          format: double
+        county:
+          type: string
+        state:
+          type: string
+          maxLength: 2
+        lessor:
+          type: string
+        lessee:
+          type: string
+    LeaseUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - EXPIRED
+          - SURRENDERED
+          - HELD_BY_PRODUCTION
+          - PRODUCING
+          - SHUT_IN
+        expirationDate:
+          type: string
+          format: date
+        royaltyRate:
+          type: number
+          format: double
+        hbpStatus:
+          type: boolean
+    Tract:
+      type: object
+      description: A land tract with legal description
+      properties:
+        tractId:
+          type: string
+        leaseId:
+          type: string
+        tractNumber:
+          type: string
+        legalDescription:
+          type: string
+          description: Full legal land description (section/township/range/meridian)
+        section:
+          type: string
+        township:
+          type: string
+        range:
+          type: string
+        meridian:
+          type: string
+        county:
+          type: string
+        state:
+          type: string
+          maxLength: 2
+        netAcres:
+          type: number
+          format: double
+        grossAcres:
+          type: number
+          format: double
+        ownershipType:
+          type: string
+          enum:
+          - MINERAL
+          - SURFACE
+          - ROYALTY
+          - WORKING_INTEREST
+        latitude:
+          type: number
+          format: double
+          nullable: true
+        longitude:
+          type: number
+          format: double
+          nullable: true
   parameters:
     LeaseId:
       name: leaseId
@@ -348,25 +367,6 @@ components:
       description: Quorum lease identifier
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

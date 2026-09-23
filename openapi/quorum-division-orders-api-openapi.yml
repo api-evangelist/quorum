@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Quorum Land Management DivisionOrders API
+  title: Quorum Land Management Division Orders API
   description: Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.
   version: 1.0.0
   contact:
@@ -15,7 +15,7 @@ servers:
 security:
 - oauth2: []
 tags:
-- name: DivisionOrders
+- name: Division Orders
   description: Division order management
 paths:
   /division-orders:
@@ -24,7 +24,7 @@ paths:
       summary: List division orders
       description: Returns division orders specifying owner decimal interest allocations.
       tags:
-      - DivisionOrders
+      - Division Orders
       parameters:
       - name: wellId
         in: query

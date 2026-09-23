@@ -1,11 +1,7 @@
 {
   "provider": "quorum",
   "sources": [
-    "quorum-divisionorders-api-openapi.yml",
-    "quorum-leases-api-openapi.yml",
-    "quorum-owners-api-openapi.yml",
-    "quorum-tracts-api-openapi.yml",
-    "quorum-wells-api-openapi.yml"
+    "_original/quorum-land-management-openapi.yml"
   ],
   "outputs": [
     "quorum-divisionorders-api-openapi.yml",
@@ -14,9 +10,22 @@
     "quorum-tracts-api-openapi.yml",
     "quorum-wells-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "quorum-land-management-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: quorum-division-orders-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 7 total)"
+  ],
+  "skipped": [
+    "quorum-division-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quorum-leases-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quorum-owners-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quorum-tracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "quorum-wells-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

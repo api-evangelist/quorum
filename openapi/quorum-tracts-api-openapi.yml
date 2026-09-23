@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Quorum Land Management DivisionOrders Tracts API
+  title: Quorum Land Management Tracts API
   description: Quorum Land Management API provides access to land records, lease management, tract data, division order information, and document management for upstream oil and gas exploration and production companies. Quorum is a leading provider of software solutions for the upstream oil and gas industry.
   version: 1.0.0
   contact:

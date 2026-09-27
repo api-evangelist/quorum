@@ -161,6 +161,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    LeaseId:
+      name: leaseId
+      in: path
+      required: true
+      description: Quorum lease identifier
+      schema:
+        type: string
   schemas:
     Lease:
       type: object
@@ -227,26 +235,6 @@ components:
         lastUpdateDatetime:
           type: string
           format: date-time
-    LeaseDetail:
-      allOf:
-      - $ref: '#/components/schemas/Lease'
-      - type: object
-        properties:
-          tracts:
-            type: array
-            items:
-              $ref: '#/components/schemas/Tract'
-          wells:
-            type: array
-            items:
-              type: object
-              properties:
-                wellId:
-                  type: string
-                wellName:
-                  type: string
-                apiNumber:
-                  type: string
     Error:
       type: object
       properties:
@@ -254,6 +242,26 @@ components:
           type: string
         message:
           type: string
+    LeaseUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - EXPIRED
+          - SURRENDERED
+          - HELD_BY_PRODUCTION
+          - PRODUCING
+          - SHUT_IN
+        expirationDate:
+          type: string
+          format: date
+        royaltyRate:
+          type: number
+          format: double
+        hbpStatus:
+          type: boolean
     LeaseCreate:
       type: object
       required:
@@ -292,26 +300,6 @@ components:
           type: string
         lessee:
           type: string
-    LeaseUpdate:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - EXPIRED
-          - SURRENDERED
-          - HELD_BY_PRODUCTION
-          - PRODUCING
-          - SHUT_IN
-        expirationDate:
-          type: string
-          format: date
-        royaltyRate:
-          type: number
-          format: double
-        hbpStatus:
-          type: boolean
     Tract:
       type: object
       description: A land tract with legal description
@@ -359,14 +347,26 @@ components:
           type: number
           format: double
           nullable: true
-  parameters:
-    LeaseId:
-      name: leaseId
-      in: path
-      required: true
-      description: Quorum lease identifier
-      schema:
-        type: string
+    LeaseDetail:
+      allOf:
+      - $ref: '#/components/schemas/Lease'
+      - type: object
+        properties:
+          tracts:
+            type: array
+            items:
+              $ref: '#/components/schemas/Tract'
+          wells:
+            type: array
+            items:
+              type: object
+              properties:
+                wellId:
+                  type: string
+                wellName:
+                  type: string
+                apiNumber:
+                  type: string
   securitySchemes:
     oauth2:
       type: oauth2

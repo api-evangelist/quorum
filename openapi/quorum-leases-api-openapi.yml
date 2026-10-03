@@ -142,33 +142,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Lease'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    LeaseId:
-      name: leaseId
-      in: path
-      required: true
-      description: Quorum lease identifier
-      schema:
-        type: string
   schemas:
     Lease:
       type: object
@@ -235,33 +208,26 @@ components:
         lastUpdateDatetime:
           type: string
           format: date-time
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    LeaseUpdate:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - EXPIRED
-          - SURRENDERED
-          - HELD_BY_PRODUCTION
-          - PRODUCING
-          - SHUT_IN
-        expirationDate:
-          type: string
-          format: date
-        royaltyRate:
-          type: number
-          format: double
-        hbpStatus:
-          type: boolean
+    LeaseDetail:
+      allOf:
+      - $ref: '#/components/schemas/Lease'
+      - type: object
+        properties:
+          tracts:
+            type: array
+            items:
+              $ref: '#/components/schemas/Tract'
+          wells:
+            type: array
+            items:
+              type: object
+              properties:
+                wellId:
+                  type: string
+                wellName:
+                  type: string
+                apiNumber:
+                  type: string
     LeaseCreate:
       type: object
       required:
@@ -299,6 +265,33 @@ components:
         lessor:
           type: string
         lessee:
+          type: string
+    LeaseUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - EXPIRED
+          - SURRENDERED
+          - HELD_BY_PRODUCTION
+          - PRODUCING
+          - SHUT_IN
+        expirationDate:
+          type: string
+          format: date
+        royaltyRate:
+          type: number
+          format: double
+        hbpStatus:
+          type: boolean
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
           type: string
     Tract:
       type: object
@@ -347,26 +340,33 @@ components:
           type: number
           format: double
           nullable: true
-    LeaseDetail:
-      allOf:
-      - $ref: '#/components/schemas/Lease'
-      - type: object
-        properties:
-          tracts:
-            type: array
-            items:
-              $ref: '#/components/schemas/Tract'
-          wells:
-            type: array
-            items:
-              type: object
-              properties:
-                wellId:
-                  type: string
-                wellName:
-                  type: string
-                apiNumber:
-                  type: string
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    LeaseId:
+      name: leaseId
+      in: path
+      required: true
+      description: Quorum lease identifier
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

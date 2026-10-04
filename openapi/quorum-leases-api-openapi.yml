@@ -208,6 +208,13 @@ components:
         lastUpdateDatetime:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     LeaseDetail:
       allOf:
       - $ref: '#/components/schemas/Lease'
@@ -228,44 +235,6 @@ components:
                   type: string
                 apiNumber:
                   type: string
-    LeaseCreate:
-      type: object
-      required:
-      - leaseName
-      - effectiveDate
-      - royaltyRate
-      - netAcres
-      - county
-      - state
-      - lessor
-      properties:
-        leaseName:
-          type: string
-        leaseNumber:
-          type: string
-        effectiveDate:
-          type: string
-          format: date
-        primaryTerm:
-          type: integer
-        royaltyRate:
-          type: number
-          format: double
-        netAcres:
-          type: number
-          format: double
-        grossAcres:
-          type: number
-          format: double
-        county:
-          type: string
-        state:
-          type: string
-          maxLength: 2
-        lessor:
-          type: string
-        lessee:
-          type: string
     LeaseUpdate:
       type: object
       properties:
@@ -286,13 +255,6 @@ components:
           format: double
         hbpStatus:
           type: boolean
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     Tract:
       type: object
       description: A land tract with legal description
@@ -340,9 +302,47 @@ components:
           type: number
           format: double
           nullable: true
+    LeaseCreate:
+      type: object
+      required:
+      - leaseName
+      - effectiveDate
+      - royaltyRate
+      - netAcres
+      - county
+      - state
+      - lessor
+      properties:
+        leaseName:
+          type: string
+        leaseNumber:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        primaryTerm:
+          type: integer
+        royaltyRate:
+          type: number
+          format: double
+        netAcres:
+          type: number
+          format: double
+        grossAcres:
+          type: number
+          format: double
+        county:
+          type: string
+        state:
+          type: string
+          maxLength: 2
+        lessor:
+          type: string
+        lessee:
+          type: string
   responses:
-    Unauthorized:
-      description: Authentication required
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -353,8 +353,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication required
       content:
         application/json:
           schema:

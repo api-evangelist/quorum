@@ -1,0 +1,41 @@
+generated: '2026-10-13'
+method: searched
+checked:
+- https://aws.amazon.com/marketplace/
+- https://azuremarketplace.microsoft.com/
+marketplace_apps: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=seller-4d2pe5mz2bxp6
+  listing_count: 2
+  apps:
+  - Energy Components (EC)
+  - DaWinci
+  seller_name: Quorum Software
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
+- partner_name: Microsoft Azure Marketplace
+  partner: microsoft-azure
+  partner_match: aggregator
+  type: marketplace
+  marketplace: azure-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Quorum%20Software
+  listing_count: 4
+  apps:
+  - Quorum Software Land Management
+  - Quorum Software On Demand Accounting for Energy
+  - Quorum Software - Execute Capital Budgeting
+  - Quorum Software Execute AFE
+  seller_name: Quorum Software
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'

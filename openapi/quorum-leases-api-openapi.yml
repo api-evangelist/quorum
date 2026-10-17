@@ -143,6 +143,13 @@ paths:
                 $ref: '#/components/schemas/Lease'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     Lease:
       type: object
       description: An oil and gas lease
@@ -208,33 +215,6 @@ components:
         lastUpdateDatetime:
           type: string
           format: date-time
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    LeaseDetail:
-      allOf:
-      - $ref: '#/components/schemas/Lease'
-      - type: object
-        properties:
-          tracts:
-            type: array
-            items:
-              $ref: '#/components/schemas/Tract'
-          wells:
-            type: array
-            items:
-              type: object
-              properties:
-                wellId:
-                  type: string
-                wellName:
-                  type: string
-                apiNumber:
-                  type: string
     LeaseUpdate:
       type: object
       properties:
@@ -255,6 +235,44 @@ components:
           format: double
         hbpStatus:
           type: boolean
+    LeaseCreate:
+      type: object
+      required:
+      - leaseName
+      - effectiveDate
+      - royaltyRate
+      - netAcres
+      - county
+      - state
+      - lessor
+      properties:
+        leaseName:
+          type: string
+        leaseNumber:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        primaryTerm:
+          type: integer
+        royaltyRate:
+          type: number
+          format: double
+        netAcres:
+          type: number
+          format: double
+        grossAcres:
+          type: number
+          format: double
+        county:
+          type: string
+        state:
+          type: string
+          maxLength: 2
+        lessor:
+          type: string
+        lessee:
+          type: string
     Tract:
       type: object
       description: A land tract with legal description
@@ -302,51 +320,35 @@ components:
           type: number
           format: double
           nullable: true
-    LeaseCreate:
-      type: object
-      required:
-      - leaseName
-      - effectiveDate
-      - royaltyRate
-      - netAcres
-      - county
-      - state
-      - lessor
-      properties:
-        leaseName:
-          type: string
-        leaseNumber:
-          type: string
-        effectiveDate:
-          type: string
-          format: date
-        primaryTerm:
-          type: integer
-        royaltyRate:
-          type: number
-          format: double
-        netAcres:
-          type: number
-          format: double
-        grossAcres:
-          type: number
-          format: double
-        county:
-          type: string
-        state:
-          type: string
-          maxLength: 2
-        lessor:
-          type: string
-        lessee:
-          type: string
+    LeaseDetail:
+      allOf:
+      - $ref: '#/components/schemas/Lease'
+      - type: object
+        properties:
+          tracts:
+            type: array
+            items:
+              $ref: '#/components/schemas/Tract'
+          wells:
+            type: array
+            items:
+              type: object
+              properties:
+                wellId:
+                  type: string
+                wellName:
+                  type: string
+                apiNumber:
+                  type: string
+  parameters:
+    LeaseId:
+      name: leaseId
+      in: path
+      required: true
+      description: Quorum lease identifier
+      schema:
+        type: string
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Invalid request
       content:
@@ -359,14 +361,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    LeaseId:
-      name: leaseId
-      in: path
-      required: true
-      description: Quorum lease identifier
-      schema:
-        type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

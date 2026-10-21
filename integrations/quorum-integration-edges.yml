@@ -3,6 +3,12 @@ method: searched
 checked:
 - https://aws.amazon.com/marketplace/
 - https://azuremarketplace.microsoft.com/
+- https://pidx.org/current-members/
+- https://reports.opengroup.org/energistics.shtml
+- https://reports.opengroup.org/osdu_forum.shtml
+- https://www.energistics.org/witsml-v131-certified-products
+- https://www.energistics.org/witsml-v1411-certified-products
+- https://www.icmm.com/our-members
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -39,3 +45,35 @@ edges:
   seller_name: Quorum Software
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: The Open Group OSDU Forum
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://reports.opengroup.org/osdu_forum.shtml
+  category: subsurface data platform standards forum membership
+  contract_reference:
+    register: The Open Group OSDU Forum membership report (reports.opengroup.org/osdu_forum.shtml)
+    standard: OSDU Data Platform
+    spec_file: null
+    role: osdu-forum-member
+    registered_name: Quorum Software
+    register_country: United States
+    register_id: https://www.quorumsoftware.com
+    matched_domain: quorumsoftware.com
+    matched_by: domain
+    signal_note: 'participation only: membership of the standards forum / consortium (The Open Group hourly membership
+      report, which links each member''s website); listing is not conformance'
+    detected_by: sweep-energy-subsurface.py
+    detected: '2026-10-20'
+  detected_by: sweep-energy-subsurface.py
+  first_seen: '2026-10-20'
+source:
+- https://reports.opengroup.org/osdu_forum.shtml
+- https://reports.opengroup.org/energistics.shtml
+- https://www.energistics.org/witsml-v1411-certified-products
+- https://www.energistics.org/witsml-v131-certified-products
+- https://pidx.org/current-members/
+- https://www.icmm.com/our-members

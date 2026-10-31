@@ -1,4 +1,4 @@
-# Quorum Software (quorum)
+# Quorum Software
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,104 +66,155 @@
 
 Quorum Software is a leading provider of energy software for upstream oil and gas operations, providing solutions for land management, royalty accounting, production reporting, and operational data management.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/quorum/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/quorum/refs/heads/main/apis.yml)
+**Areas:** Energy · Oil and Gas · Upstream · Land Management · Royalty Accounting · Production Reporting
 
-## Scope
+## Quorum Software on APIs.io
 
-- **Type:** Index
+Everything profiled for Quorum Software is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/quorum/](https://apis.io/providers/quorum/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Energy
-- Oil & Gas
-- Upstream
-- Land Management
-- Royalty Accounting
-- Production Reporting
+- [Quorum Royalty Accounting API](https://apis.io/apis/quorum/quorum-royalty-accounting-api/) — Quorum Royalty Accounting API enables access to royalty payment calculations, owner statements, suspense management, and title data for oil and gas mineral…
+- [Quorum Production Reporting API](https://apis.io/apis/quorum/quorum-production-reporting-api/) — Quorum Production Reporting API provides access to well production volumes, allocations, gas balancing, and regulatory reporting data for upstream oil and…
+- [Quorum Software Leases API](https://apis.io/apis/quorum/quorum-leases-api/) — Oil and gas lease management
+- [Quorum Software Owners API](https://apis.io/apis/quorum/quorum-owners-api/) — Mineral interest owner management
+- [Quorum Software Tracts API](https://apis.io/apis/quorum/quorum-tracts-api/) — Land tract records
+- [Quorum Software Wells API](https://apis.io/apis/quorum/quorum-wells-api/) — Well master data
+- [Quorum Software Division Orders API](https://apis.io/apis/quorum/quorum-division-orders-api/) — Division order management
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-18
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Quorum Land Management API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Quorum Land Management API provides access to land records, lease management, tract data, and division order information for upstream oil and gas exploration and production companies.
+- [Quorum Agentic Access](https://apis.io/agentic-access/quorum/quorum-agentic-access/)
 
-- **Human URL:** [https://www.quorumsoftware.com/](https://www.quorumsoftware.com/)
-- **Base URL:** `https://api.quorumsoftware.com/v1`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Energy
-- Oil & Gas
-- Upstream
-- Land
-- REST
+- [Quorum Oil & Gas Lease](https://apis.io/schemas/quorum/quorum-lease/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://www.quorumsoftware.com/)
-- [OpenAPI](openapi/quorum-land-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/quorum-land-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/quorum-land-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/quorum-lease-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](json-ld/quorum-context.jsonld)
+Linked-data contexts for the provider's vocabulary.
 
-### Quorum Royalty Accounting API
+- [Quorum Context](https://apis.io/jsonld/quorum/quorum-context/)
 
-Quorum Royalty Accounting API enables access to royalty payment calculations, owner statements, suspense management, and title data for oil and gas mineral rights owners and operators.
+#### Collections (6)
 
-- **Human URL:** [https://www.quorumsoftware.com/](https://www.quorumsoftware.com/)
+Postman and Open Collection request collections.
 
-#### Tags
+- [Quorum Land Management DivisionOrders API](https://apis.io/collections/quorum/open-quorum-divisionorders-api/)
+- [Quorum Land Management API](https://apis.io/collections/quorum/open-quorum-land-management/)
+- [Quorum Land Management DivisionOrders Leases API](https://apis.io/collections/quorum/open-quorum-leases-api/)
+- [Quorum Land Management DivisionOrders Owners API](https://apis.io/collections/quorum/open-quorum-owners-api/)
+- [Quorum Land Management DivisionOrders Tracts API](https://apis.io/collections/quorum/open-quorum-tracts-api/)
+- [Quorum Land Management DivisionOrders Wells API](https://apis.io/collections/quorum/open-quorum-wells-api/)
 
-- Energy
-- Oil & Gas
-- Royalty
-- Accounting
-- REST
+#### Governance rules (1)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://www.quorumsoftware.com/)
-- [Postman Collection](collections/quorum-land-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/quorum-land-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Quorum Software — jsonschema rules](https://apis.io/rules/quorum/quorum-jsonschema-spectral-rules/)
 
-### Quorum Production Reporting API
+#### Security (3)
 
-Quorum Production Reporting API provides access to well production volumes, allocations, gas balancing, and regulatory reporting data for upstream oil and gas operations.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://www.quorumsoftware.com/](https://www.quorumsoftware.com/)
+- [Quorum Authentication](https://apis.io/security/quorum/quorum-authentication/)
+- [Quorum Domain Security](https://apis.io/security/quorum/quorum-domain-security/)
+- [Quorum Trust Center](https://apis.io/security/quorum/quorum-trust-center/)
 
-#### Tags
+#### OAuth scopes (1)
 
-- Energy
-- Oil & Gas
-- Production
-- Reporting
-- REST
+The permissions the API asks for.
 
-#### Properties
+- [Quorum Scopes](https://apis.io/scopes/quorum/quorum-scopes/)
 
-- [Documentation](https://www.quorumsoftware.com/)
-- [Postman Collection](collections/quorum-land-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/quorum-land-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-## Common Properties
+Published plans, tiers and prices.
 
-- [GitHub Organization](https://github.com/QuorumUS)
-- [LinkedIn](https://www.linkedin.com/company/quorum-software)
-- [Portal](https://www.quorumsoftware.com/)
+- [Quorum Plans Pricing](https://apis.io/plans/quorum/quorum-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Quorum Rate Limits](https://apis.io/rate-limits/quorum/quorum-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Quorum Finops](https://apis.io/finops/quorum/quorum-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.quorumsoftware.com/)
 - [Support](https://community.quorumsoftware.com/s/login/)
 - [Blog](https://resources.quorumsoftware.com/blog)
-- [Privacy Policy](https://www.quorumsoftware.com/privacy-policy/)
-- [Terms of Service](https://www.quorumsoftware.com/terms-and-conditions/)
+- [Terms of service](https://www.quorumsoftware.com/terms-and-conditions/)
+- [Privacy policy](https://www.quorumsoftware.com/privacy-policy/)
+- [GitHub](https://github.com/QuorumUS)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 39.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 56.4 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 38.1 |
+| Access clarity | 34.2 |
+
+**Agent readiness 22.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 38.5** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/quorum/](https://apis.io/providers/quorum/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Quorum Software: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/quorum/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
